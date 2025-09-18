@@ -1,0 +1,12 @@
+Hello, I have a vision for an android watch app that can run on my samsung galaxy watch 6.
+
+The goal of this app is to allow me to track my time usage. My issue with the available time-tracker apps is that I need to remember to mark when I change tasks and remember what I was doing between now and the last time I made an entry. This leads to systematic biases in how I measure my time usage. When researchers study how people use their time they usually give the subject alarms that go off at random times at which they are told to record what they were doing at that time. The ideal platform for this kind of use case is a smart watch. It's always on and accessible and can do alarms.
+
+I'd like to make a watch app that will generate alarms at random intervals during the day. When the alarm goes off, the app shows the user a list of time use categories. To silence the alarm the user simply taps the category that corresponds with what they were doing at the time the alarm went off. This makes the whole process non-invasive, easy, and free from systemic bias and memory lapses.
+
+When the user starts the app from the watch it opens a settings menu with a few options. 1: Turn on or off the alarms. 2: set the average alarm interval. 3: set the chime/vibrate modes as you would on a normal alarm. and 4: Edit the list of categories. This edit menu should allow the user to add, delete, and change the title or order of the categories.
+
+The data should be synced with the companion phone app after the user silences the alarm. This companion app should allow the user to export the accumulated data to a .csv file that can be emailed and analyzed offline. This companion app should also allow the user to see breakdowns of time use by day, week, or month. This allows the user to view breakdowns (via pie chart or similar) for any day, week, or month.
+
+Suggestions:
+Use Kotlin. I have already made an empty wear-os app and companion app. Plan out how you want to architect it. Make unit tests. Iterate to solve bugs.
