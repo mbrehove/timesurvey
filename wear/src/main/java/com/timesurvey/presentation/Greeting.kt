@@ -1,6 +1,6 @@
 package com.timesurvey.presentation
 
-import androidx.compose.material.Text
+import androidx.wear.compose.material.Text
 import androidx.compose.runtime.Composable
 
 @Composable
