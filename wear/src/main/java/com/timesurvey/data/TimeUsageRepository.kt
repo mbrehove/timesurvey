@@ -3,6 +3,7 @@ package com.timesurvey.data
 import com.timesurvey.data.database.Category
 import com.timesurvey.data.database.TimeUsageDao
 import com.timesurvey.data.database.TimeUsageRecord
+import kotlinx.coroutines.flow.Flow
 
 class TimeUsageRepository(private val timeUsageDao: TimeUsageDao) {
 
@@ -10,15 +11,15 @@ class TimeUsageRepository(private val timeUsageDao: TimeUsageDao) {
         timeUsageDao.insertTimeUsageRecord(record)
     }
 
-    suspend fun getAllTimeUsageRecords(): List<TimeUsageRecord> {
-        return timeUsageDao.getAllTimeUsageRecords()
+    fun getTimeUsageRecords(startTime: Long, endTime: Long): Flow<List<TimeUsageRecord>> {
+        return timeUsageDao.getTimeUsageRecords(startTime, endTime)
     }
 
     suspend fun addCategory(category: Category) {
         timeUsageDao.insertCategory(category)
     }
 
-    suspend fun getAllCategories(): List<Category> {
+    fun getAllCategories(): Flow<List<Category>> {
         return timeUsageDao.getAllCategories()
     }
 }

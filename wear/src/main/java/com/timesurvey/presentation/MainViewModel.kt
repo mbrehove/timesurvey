@@ -1,42 +1,19 @@
 package com.timesurvey.presentation
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.timesurvey.data.TimeUsageRepository
-import com.timesurvey.data.database.Category
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
+import androidx.lifecycle.ViewModelProvider
+import com.timesurvey.data.database.TimeUsageDao
 
-class MainViewModel(private val repository: TimeUsageRepository) : ViewModel() {
+class MainViewModel(private val dao: TimeUsageDao) : ViewModel() {
+    val categories = dao.getAllCategories()
+}
 
-    private val _categories = MutableStateFlow<List<Category>>(emptyList())
-    val categories = _categories.asStateFlow()
-
-    private val _alarmsOn = MutableStateFlow(false)
-    val alarmsOn = _alarmsOn.asStateFlow()
-
-    private val _alarmInterval = MutableStateFlow(60) // Default to 60 minutes
-    val alarmInterval = _alarmInterval.asStateFlow()
-
-    init {
-        viewModelScope.launch {
-            _categories.value = repository.getAllCategories()
+class MainViewModelFactory(private val dao: TimeUsageDao) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return MainViewModel(dao) as T
         }
-    }
-
-    fun toggleAlarms(isOn: Boolean) {
-        _alarmsOn.value = isOn
-    }
-
-    fun setAlarmInterval(interval: Int) {
-        _alarmInterval.value = interval
-    }
-
-    fun addCategory(name: String) {
-        viewModelScope.launch {
-            repository.addCategory(Category(name = name))
-            _categories.value = repository.getAllCategories()
-        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

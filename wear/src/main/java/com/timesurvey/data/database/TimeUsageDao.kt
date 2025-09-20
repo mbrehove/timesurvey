@@ -1,20 +1,25 @@
 package com.timesurvey.data.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TimeUsageDao {
+    @Query("SELECT * FROM categories ORDER BY `order` ASC")
+    fun getAllCategories(): Flow<List<Category>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCategory(category: Category)
+
+    @Update
+    suspend fun updateCategory(category: Category)
+
+    @Delete
+    suspend fun deleteCategory(category: Category)
+
     @Insert
     suspend fun insertTimeUsageRecord(record: TimeUsageRecord)
 
-    @Query("SELECT * FROM time_usage_records ORDER BY timestamp DESC")
-    suspend fun getAllTimeUsageRecords(): List<TimeUsageRecord>
-
-    @Insert
-    suspend fun insertCategory(category: Category)
-
-    @Query("SELECT * FROM categories ORDER BY id ASC")
-    suspend fun getAllCategories(): List<Category>
+    @Query("SELECT * FROM time_usage_records WHERE timestamp BETWEEN :startTime AND :endTime")
+    fun getTimeUsageRecords(startTime: Long, endTime: Long): Flow<List<TimeUsageRecord>>
 }
