@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.androidx.tiles.tooling.preview)
     implementation(libs.horologist.compose.tools)
     implementation(libs.horologist.tiles)
+    implementation(libs.androidx.wear.compose.navigation)
     implementation(libs.androidx.watchface.complications.data.source.ktx)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx) // For coroutine support

@@ -7,6 +7,3 @@ I'd like to make a watch app that will generate alarms at random intervals durin
 When the user starts the app from the watch it opens a settings menu with a few options. 1: Turn on or off the alarms. 2: set the average alarm interval. 3: set the chime/vibrate modes as you would on a normal alarm. and 4: Edit the list of categories. This edit menu should allow the user to add, delete, and change the title or order of the categories.
 
 The data should be synced with the companion phone app after the user silences the alarm. This companion app should allow the user to export the accumulated data to a .csv file that can be emailed and analyzed offline. This companion app should also allow the user to see breakdowns of time use by day, week, or month. This allows the user to view breakdowns (via pie chart or similar) for any day, week, or month.
-
-Suggestions:
-Use Kotlin. I have already made an empty wear-os app and companion app. Plan out how you want to architect it. Make unit tests. Iterate to solve bugs.

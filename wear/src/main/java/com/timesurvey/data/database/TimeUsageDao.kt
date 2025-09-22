@@ -8,6 +8,9 @@ interface TimeUsageDao {
     @Query("SELECT * FROM categories ORDER BY `order` ASC")
     fun getAllCategories(): Flow<List<Category>>
 
+    @Query("SELECT * FROM categories ORDER BY `order` ASC")
+    suspend fun getAllCategoriesSuspend(): List<Category>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCategory(category: Category)
 
