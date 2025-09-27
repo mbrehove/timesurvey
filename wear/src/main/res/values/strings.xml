@@ -10,4 +10,5 @@
     <string name="alarms_enabled">Alarms Enabled</string>
     <string name="alarm_interval_minutes">Alarm Interval (minutes): %1$d</string>
     <string name="edit_categories">Edit Categories</string>
+    <string name="test_alarm">Test Alarm</string>
 </resources>

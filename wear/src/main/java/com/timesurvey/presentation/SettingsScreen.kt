@@ -49,5 +49,9 @@ fun SettingsScreen(viewModel: MainViewModel, onEditCategories: () -> Unit) {
             onClick = onEditCategories,
             label = { Text(stringResource(R.string.edit_categories)) }
         )
+        Chip(
+            onClick = { viewModel.triggerTestAlarm() },
+            label = { Text(stringResource(R.string.test_alarm)) }
+        )
     }
 }

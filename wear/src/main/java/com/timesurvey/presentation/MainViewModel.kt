@@ -19,7 +19,7 @@ class MainViewModel(
     private val _alarmsEnabled = MutableStateFlow(true)
     val alarmsEnabled: StateFlow<Boolean> = _alarmsEnabled.asStateFlow()
 
-    private val _alarmInterval = MutableStateFlow(2)
+    private val _alarmInterval = MutableStateFlow(1)
     val alarmInterval: StateFlow<Int> = _alarmInterval.asStateFlow()
 
     init {
@@ -44,6 +44,12 @@ class MainViewModel(
 
     fun setAlarmInterval(interval: Int) {
         _alarmInterval.value = interval
+    }
+
+    fun triggerTestAlarm() {
+        // This would normally be done by AlarmManager, but we'll simulate it
+        // by directly invoking what the AlarmReceiver would do
+        alarmScheduler.triggerAlarmNow()
     }
 }
 
