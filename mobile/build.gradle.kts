@@ -52,5 +52,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    wearApp(project(":wear"))
+    // Note: wearApp configuration is deprecated in AGP 9.0
+    // The wear module is standalone and doesn't need to be bundled with the mobile app
 }
